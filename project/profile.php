@@ -127,7 +127,7 @@ if (isset($_SESSION['user'])){
               <span class="input-group-text" id="inputGroup-sizing-sm" style="color:343A40 ;  font-size:16px ;background-color: #25A2B7;">E-mail</span>
             </div>
             <input type="email" name="email"readonly placeholder="Enter your E-Mail" value="<?= $user->getEmail() ?>" required value="" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"  id="emailold">
-
+            <a class="input-group-text" style="text-decoration: none;color:343A40 ;  font-size:16px ;background-color: #25A2B7;" href='phpSendMailGmail.php?type=regis&email=<?= $user->getEmail() ?>&username=<?= $user->getUsername() ?>&from=profile'><font color="black">Verify E-mail</font></a>
           </div>
 
 
