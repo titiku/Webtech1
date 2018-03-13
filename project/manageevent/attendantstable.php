@@ -99,7 +99,10 @@
          <td><?php echo "<img src=$pic  height='300' width='300'>"; ?></td>
          <td><?php echo "<img src=$pic2  height='300' width='300'>"; ?></td>
          <?php
-         if ($person->get_status() =='w'){
+         if ($person->get_status() =='c'){
+               $status='checkin';
+         }
+        else if ($person->get_status() =='w'){
                $status='wait refund';
          }
           else if ($person->get_status() =='r'){

@@ -135,6 +135,20 @@ function checkOrganizer($list){
             $people=$ar;
           }
         }
+        if (isset($_GET['searchnameevent'])) {
+          $searchaddress= $_GET['searchnameevent'];
+          if($searchaddress!=""){
+            $n=0;
+            $ar=array();
+                for ($j = 0; $j < count($people); $j++){
+                  if (strpos($people[$j]->get_name_event(), $searchaddress) !== false) {
+                    $ar[$n]=$people[$j];
+                    $n+=1;
+                  }
+                }
+            $people=$ar;
+          }
+        }
 
         if (isset($_GET['searchaddress'])) {
           $searchaddress= $_GET['searchaddress'];
@@ -628,6 +642,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     </select>
 
     <input type="text" name="searchusername" value="" placeholder="Search Username">
+    <input type="text" name="searchnameevent" value="" placeholder="Search Nameevent">
     <input type="text" name="searchaddress" value="" placeholder="Search Address">
 
     <input type="submit" name="" value="Search">

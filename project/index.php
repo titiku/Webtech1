@@ -177,7 +177,9 @@
           <option  value="2020">2020</option>
         </select>
         <input type="text" name="searchusername" value="" placeholder="Search Username">
+        <input type="text" name="searchnameevent" value="" placeholder="Search Nameevent">
         <input type="text" name="searchaddress" value="" placeholder="Search Address">
+
         <input type="submit" name="" value="Search">
     </form></center>
 
@@ -205,9 +207,7 @@
                   $n+=1;
                 }
             }
-
         $people=$ar;
-
       }
 
     }
@@ -292,6 +292,21 @@
       }
     }
 
+    if (isset($_GET['searchnameevent'])) {
+      $searchaddress= $_GET['searchnameevent'];
+      if($searchaddress!=""){
+        $n=0;
+        $ar=array();
+            for ($j = 0; $j < count($people); $j++){
+              if (strpos($people[$j]->get_name_event(), $searchaddress) !== false) {
+                $ar[$n]=$people[$j];
+                $n+=1;
+              }
+            }
+        $people=$ar;
+      }
+    }
+
     if (isset($_GET['searchaddress'])) {
       $searchaddress= $_GET['searchaddress'];
       if($searchaddress!=""){
@@ -323,13 +338,11 @@
 
         $output = '<form id="form'.$i.'" class="box" action="page.php" method="get" style="background-image: url('.$pic2.') ">
                       <input hidden type="text" name="id_ev" value="'.$events[$i]->get_id_ev().'">
-                      <div style="word-wrap: break-word;width: 100%;height:100%;" >'.($i+1).'.'.$events[$i]->get_name_event().'</div>
+                      <div  style="word-wrap: break-word; font-size: 20px;background-color: white ;width: 100%;height:15%;" >'.($i+1).'.'.$events[$i]->get_name_event().'</div>
                       <input hidden type="submit" value="Submit">
                   </form>'
 
                   ;
-
-
 
         echo $output;
 
@@ -415,9 +428,7 @@
 
 
     echo $movePage;
-
      ?>
-     <!-- <script src="jquery-3.3.1.min.js" charset="utf-8"></script> -->
 
      <script type="text/javascript">
           $(document).ready(function(){

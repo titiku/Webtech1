@@ -19,8 +19,8 @@
 	$mail->Password = "SuratGardens123456"; // GMAIL password
 	$mail->From = "SuratGardens@gmail.com"; // "name@yourdomain.com";
 	//$mail->AddReplyTo = "support@thaicreate.com"; // Reply
-	$mail->FromName = 'Surat Events.'  ;// set from Name
-	$mail->Subject = "Surat Events.";
+	$mail->FromName = 'Hand Some Boy.'  ;// set from Name
+	$mail->Subject = "Hand Some Boy.";
 	if (isset($_GET['username'])){
 		if ($_GET['type'] == "regis"){
 			$mail->Body = 'Your link : <a href="http://localhost/project/verifyUser.php?username='.$_GET['username'].'">http://localhost/project/verifyUser.php</a>';
@@ -55,6 +55,9 @@
 	if (isset($_GET['id_ev'])){
 		echo '<script type="text/javascript">console.log("id_ev");</script>';
 		echo '<script type="text/javascript">window.location.href = "manageevent/attendantstable.php?id_ev='.$_GET['id_ev'].'";</script>';
+	}
+	if (isset($_GET['from']) && $_GET['from'] == 'profile'){
+		echo '<script type="text/javascript">window.location.href = "profile.php";</script>';
 	}
 	echo '<script type="text/javascript">window.location.href = "login.php";</script>';
 ?>

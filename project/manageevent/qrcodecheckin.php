@@ -759,6 +759,6 @@ function doqr(link) {
 }
 
   setupqr(<?php echo '"qrcanv'.$_GET['id_at'].'"' ?>);
-  doqr(<?php echo '"checkin.php?id_at='.$_GET['id_at'].'"' ?>);
+  doqr(<?php echo '"http://localhost/project/manageevent/checkin.php?id_at='.$_GET['id_at'].'"' ?>);
 
 </script>
