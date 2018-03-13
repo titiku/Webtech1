@@ -409,21 +409,22 @@ img {
 
            <!-- <a href="#" class="btn btn-secondary">แชร์</a> -->
        <p class="lead text-muted">จำนวนผู้เข้าร่วม</p>
-       <div class="progress mybar" style="background-color: gray;width:60%">
+       <div class="progress mybar" style="background-color: gray;width:60%;height:5%">
 
-         <div class="progress-bar bg-blue progress-bar-striped progress-bar-animated " style="width:<?php echo strval(($event->get_current_capacity()/$event->get_capacity())*100); ?>%" ><span style="color:black;"><?php echo strval($event->get_current_capacity())."/".strval($event->get_capacity()); ?></span></div>
+      <div class="progress-bar bg-blue progress-bar-striped progress-bar-animated " style="font-color:white;font-size:180%;width:<?php echo strval(($event->get_current_capacity()/$event->get_capacity())*100); ?>%" ><span style="color:white;"><?php echo strval($event->get_current_capacity())."/".strval($event->get_capacity()); ?></span></div>
        </div><br><br>
 
        <?php
-
             if(trim($event->get_precondition()," ")==''){
               echo "  <h1>Precondition: ---- </h1>";
             }else{
-              echo "  <h1>Precondition:".  $event->get_precondition() ."</h1>";
+              echo "  <h1>Precondition: ".  $event->get_precondition() ."</h1>";
             }
-
+            if(!trim($event->get_payment()," ")==''){
+                echo "  <h1>Payment: ".  $event->get_payment() ."</h1>";
+            }
         ?>
-        <!-- <h1>precondition: <?= $event->get_precondition()?> </h1> -->
+
        <h1>Price: <?= $event->get_free()?> Baht</h1>
        <?php
        if (isset($_SESSION['user'])){
@@ -431,7 +432,7 @@ img {
                   if ($_SESSION['user']->getStatus()!='y'){
                       echo '<button  class="btn btn-primary" onclick="myFunction()" type="button" name="button">submit</button>';
                   }else{
-                        echo '<a onclick="callmodal()"  class="btn btn-primary">เข้าร่วม</a>';
+                        echo '<a onclick="callmodal()"  class="btn btn-primary" >เข้าร่วม</a>';
                   }
                 } else {
                   echo '<a class="btn btn-primary" style="color:white">เต็ม</a>';
@@ -597,7 +598,6 @@ var span = document.getElementsByClassName("close")[0];
           reader.onload = function (e) {
               $('#imageold2').attr('src', e.target.result);
           }
-
           reader.readAsDataURL(input.files[0]);
       }
   }

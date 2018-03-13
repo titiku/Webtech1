@@ -63,13 +63,17 @@
       $image=$_SESSION['user']->getImage();
     }
   }
-
-
-  $user = new Account($id_ac,$username,$password,$first_name,$last_name,$age,$gender,$email,$phone,$address,$id,$type,$image,$_POST["status"]);
+    echo $_SESSION['user']->getEmail();
+    // echo "<br>";
+    // echo "$email";
+  if ($_SESSION['user']->getEmail()==$email){
+    $user = new Account($id_ac,$username,$password,$first_name,$last_name,$age,$gender,$email,$phone,$address,$id,$type,$image,$_SESSION['user']->getStatus());
+  }else{
+    $user = new Account($id_ac,$username,$password,$first_name,$last_name,$age,$gender,$email,$phone,$address,$id,$type,$image,'n');
+  }
   $db =new Database();
   $db->updateAccounts($user);
-
-   echo "<script type='text/javascript'>window.location.href = \"http://localhost/project/profile.php\";</script>";
+   echo "<script type='text/javascript'>window.location.href = \"profile.php\";</script>";
   }
 
 

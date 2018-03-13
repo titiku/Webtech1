@@ -761,13 +761,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 
       <td>
-        <!-- <form class="" style="margin-bottom:0%"  action="canvas.php" method="post"> -->
-            <!-- <input hidden type="text" name="id_ev" value="<?= $person->get_id_ev() ?>">
-            <input hidden type="text" name="url" value="<?= $person->get_google_form_url() ?>"> -->
-            <a class="btn btn-info" style="margin-bottom:20%;width:100%;" target="_blank" href="canvas.php?id_ev=<?php $person->get_id_ev() ?>&url=<?= $person->get_google_form_url() ?>">QRCode</a>
-          <!-- <input class="btn btn-info" target="_blank" style="margin-bottom:20%;width:100%;" type="submit" name="submit" value="QRCode"> -->
-        <!-- </form> -->
 
+            <a class="btn btn-info" style="margin-bottom:20%;width:100%;" target="_blank" href="qrcodegoogle.php?id_ev=<?php $person->get_id_ev() ?>&url=<?= $person->get_google_form_url() ?>">QRCode</a>
+  
         <form class="" style="margin-bottom:0%"  action="attendantstable.php" method="get">
             <input hidden type="text" name="id_ev" value="<?= $person->get_id_ev()?>">
           <input class="btn btn-info" style="margin-bottom:20%;width:100%;" type="submit" name="submit" value="View">
@@ -777,7 +773,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
           ','<?= $person->get_image() ?>','<?= $person->get_teaser_VDO() ?>','<?= $person->get_date() ?>','<?= $person->get_time() ?>
           ','<?= $person->get_map() ?>','<?= $person->get_capacity() ?>','<?= $person->get_free() ?>','<?= $person->get_type() ?>','<?= $person->get_current_capacity() ?>
           ','<?= $person->get_precondition() ?>','<?= $person->get_create_time() ?>','<?= $person->get_status() ?>
-          ','<?= $person->get_google_form_url() ?>')">Edit</button>
+          ','<?= $person->get_google_form_url() ?>','<?= $person->get_payment() ?>')">Edit</button>
 
         <a onclick="return confirm('Are you sure you want to delete this entry?')" style="width:100%;" href="delete.php?id_ev=<?= $person->get_id_ev() ?>" class='btn btn-danger'>Delete</a>
       </td>
@@ -1010,6 +1006,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
         <input  id="google_form_url" type="text" name="google_form_url" value="" style="margin-top:10px ; "  class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" >
         </div>
 
+        <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="color:343A40 ; margin-top:10px ; font-size:18px ;background-color: #00cc99;border-radius: 20px;">Payment</span>
+        </div>
+        <input  id="payment"  onkeypress="return event.keyCode != 13;" type="text"  name="payment"   size="40px" style="margin-top:10px ;border-radius: 20px; "  class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" >
+        </div>
 
 
           <h1 style="color:#5FBF89 ; font-size:22px ; padding-right:10px">Image</h1>
@@ -1077,12 +1079,14 @@ var modal = document.getElementById('myModal');
 var span = document.getElementsByClassName("close")[0];
 
 
-function ball(id_ev,id_ac,name_event,image,teaser_VDO,date,time,location,capacity,free,type,current,precondition,create_time,status,google_form_url) {
+function ball(id_ev,id_ac,name_event,image,teaser_VDO,date,time,location,capacity,free,type,current,precondition,create_time,status,google_form_url,payment) {
     modal.style.display = "block";
     document.getElementById("precondition").value=precondition.trim();
     document.getElementById("create_time").value=create_time.trim();
     document.getElementById("status").value=status.trim();
     document.getElementById("google_form_url").value=google_form_url.trim();
+    document.getElementById("payment").value=payment.trim();
+
 
 
     document.getElementById("current").value=current.trim();

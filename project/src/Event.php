@@ -20,8 +20,9 @@ class Event{
   protected $create_time;
   protected $status;
   protected $google_form_url;
+  protected $payment;
 
-  function __construct($id_ev,$id_ac,$name_event, $detail,$image, $teaser_VDO,$date, $time,$location, $map,$current_capacity,$capacity, $free,$type,$precondition,$create_time,$status,$google_form_url)
+  function __construct($id_ev,$id_ac,$name_event, $detail,$image, $teaser_VDO,$date, $time,$location, $map,$current_capacity,$capacity, $free,$type,$precondition,$create_time,$status,$google_form_url,$payment)
   {
     $this->id_ev = $id_ev;
     $this->id_ac = $id_ac;
@@ -37,11 +38,11 @@ class Event{
     $this->capacity = $capacity;
     $this->free = $free;
     $this->type = $type;
-
     $this->precondition = $precondition;
     $this->create_time = $create_time;
     $this->status = $status;
-      $this->google_form_url = $google_form_url;
+    $this->google_form_url = $google_form_url;
+    $this->payment = $payment;
 
 
   }
@@ -115,6 +116,10 @@ class Event{
   function get_google_form_url(){
     return $this->google_form_url;
   }
+  function get_payment(){
+    return   $this->payment;
+  }
+
 
 
 }

@@ -236,17 +236,20 @@ $image="/project/picture/img/icon.png";
       <input type="text" name="id" style="border-radius: 20px;" placeholder="Enter your ID-number" onKeyUp="if(this.value*1!=this.value) this.value='' ;"  minlength = "13" maxlength = "13" data-format = "ddddddddddddd" required  value="<?php if(isset($_POST["id"])){echo $_POST["id"];} ?>" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
 
     </div>
+    <div class="input-group input-group-sm mb-3">
+    <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-sm" style="color:343A40 ;  font-size:16px ;background-color: #F1D9D9;border-radius: 20px;">Role</span>
+    </div>
+      <select name="type">
+          <option id='attendant' value="attendant">Attendant</option>
+          <option id='organizer' value="organizer">Organizer</option>
+        </select>
+          </div>
     </p>
 
 
-      Role
-        <select name="type">
-            <option id='organizer' value="organizer">Organizer</option>
-            <option id='attendant' value="attendant">Attendant</option>
-          </select>
 
       <br>
-
       <input  style="margin-left:85%" type="submit" class="btn btn-info" name="submit" value="Accept" id="but">
      </p>
 

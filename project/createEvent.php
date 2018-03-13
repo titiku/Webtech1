@@ -84,7 +84,7 @@ $db=new Database();
 
   // echo $totalimg;
 
-$event = new Event(1,$_SESSION['user']->getIdAcount(),$name,$detail,$totalimg,$video2,$date,$time,$location,$latlng,0,$capacity,$price,$type,$_POST['precondition'],$_POST['create_time'],'y',$_POST['googleform']);
+$event = new Event(1,$_SESSION['user']->getIdAcount(),$name,$detail,$totalimg,$video2,$date,$time,$location,$latlng,0,$capacity,$price,$type,$_POST['precondition'],$_POST['create_time'],'y',$_POST['googleform'],$_POST['payment']);
 
     $db->addEvents($event);
    echo "<script type='text/javascript'>window.location.href = \"http://localhost/project\";</script>";
@@ -548,6 +548,13 @@ html, body {
           <span class="input-group-text" id="inputGroup-sizing-sm" style="color:343A40 ; margin-top:10px ; font-size:18px ;background-color: #00cc99;border-radius: 20px;">Google Form URL</span>
         </div>
         <input  onkeypress="return event.keyCode != 13;" type="text"  name="googleform"   size="40px" style="margin-top:10px ;border-radius: 20px; "  class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" >
+        </div>
+
+        <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="color:343A40 ; margin-top:10px ; font-size:18px ;background-color: #00cc99;border-radius: 20px;">Payment</span>
+        </div>
+        <input  onkeypress="return event.keyCode != 13;" type="text"  name="payment"   size="40px" style="margin-top:10px ;border-radius: 20px; "  class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" >
         </div>
 
           <?php

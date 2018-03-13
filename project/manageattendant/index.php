@@ -95,9 +95,7 @@ $list = $database->loadAttendantIDAC($_SESSION['user']->getIdAcount());
                     }
                     if($person->get_status()=='c'){
 
-                      $ac=$database->loadAccount($person->get_id_ac());
-                      $ev=$database->loadEvent($person->get_id_ev());
-                      echo ' <a class="btn btn-info" style="margin-bottom:20%;width:100%;" target="_blank" href="certificate.php?first_name='.$ac->getFirst_name().'&last_name='.$ac->getLast_name().'&event_name='.$ev->get_name_event().'&date='.$ev->get_date().'">Certificate</a>';
+                      echo ' <a class="btn btn-info" style="margin-bottom:20%;width:100%;" target="_blank" href="certificate.php?id='.$person->get_id_at().'">Certificate</a>';
                     }
                    ?>
                 </form>

@@ -187,7 +187,7 @@ class Database {
     $event;
     while($row = $statement->fetch(PDO::FETCH_ASSOC)) {
       $event = new Event($row['id_ev'],$row['id_ac'],$row['name_event'],$row['detail'],$row['image'],$row['teaser_VDO'],$row['date'],$row['time'],$row['location'],$row['map'],$row['current_capacity']
-      ,$row['capacity'],$row['free'],$row['type'],$row['precondition'],$row['create_time'],$row['status'],$row['google_form_url']);
+      ,$row['capacity'],$row['free'],$row['type'],$row['precondition'],$row['create_time'],$row['status'],$row['google_form_url'],$row['payment']);
       return $event;
     }
   }
@@ -199,7 +199,7 @@ class Database {
     $count = 0;
     while($row = $statement->fetch(PDO::FETCH_ASSOC)) {
       $event = new Event($row['id_ev'],$row['id_ac'],$row['name_event'],$row['detail'],$row['image'],$row['teaser_VDO'],$row['date'],$row['time'],$row['location'],$row['map'],$row['current_capacity']
-      ,$row['capacity'],$row['free'],$row['type'],$row['precondition'],$row['create_time'],$row['status'],$row['google_form_url']);
+      ,$row['capacity'],$row['free'],$row['type'],$row['precondition'],$row['create_time'],$row['status'],$row['google_form_url'],$row['payment']);
       $events[$count] = $event;
       $count = $count + 1;
     }
@@ -214,7 +214,7 @@ class Database {
     "',teaser_VDO='".$event->get_teaser_VDO()."' ,date='".$event->get_date()."', time='".$event->get_time()."',location='".$event->get_location().
     "' ,map='".$event->get_map()."',current_capacity='".$event->get_current_capacity()."',capacity='".$event->get_capacity()."',free='".$event->get_free()."' , type='".$event->get_type().
     "' , precondition='".$event->get_precondition()."' , create_time='".$event->get_create_time()."' , status='".$event->get_status()."' , google_form_url='".$event->get_google_form_url().
-    "' WHERE id_ev='".$event->get_id_ev()."'";
+    "' , payment='".$event->get_payment()."' WHERE id_ev='".$event->get_id_ev()."'";
     $affectedRows = $connection->exec($sql);
   }
 
@@ -242,9 +242,8 @@ class Database {
           "','".$event->get_detail()."','".$event->get_image()."','" .$event->get_teaser_VDO()."'
           ,'".$event->get_date()."','".$event->get_time()."','" .$event->get_location()."','".$event->get_map().
           "','".$event->get_current_capacity()."','".$event->get_capacity()."','" .$event->get_free().
-          "','" . $event->get_type()."','".$event->get_precondition()."','".$event->get_create_time()."','".$event->get_status()."','".$event->get_google_form_url()."')"
+          "','" . $event->get_type()."','".$event->get_precondition()."','".$event->get_create_time()."','".$event->get_status()."','".$event->get_google_form_url()."','".$event->get_payment()."')"
         );
-
   }
 
   function loadLogs(){
@@ -310,6 +309,14 @@ class Database {
               ,$row['gender'],$row['email'],$row['phone'],$row['address'],$row['ID'],$row['type'],$row['image'],$row['status']);
               return $user;
             }
+    }
+    function checkUser($username){
+      $connection = new PDO('mysql:host=localhost;dbname=project;charset=utf8mb4','admin','admin1234');
+      $statement = $connection->query('SELECT * FROM accounts WHERE username="' . $username.'"');
+      while($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+        return 'true';
+      }
+      return 'false';
     }
 
 

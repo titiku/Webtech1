@@ -22,7 +22,7 @@
      $attendant  = $database->loadAttendant($_GET['id_at']);
      $database->updateAttendant($attendant,'c');
 
-     echo "check in complete";
+     // echo "check in complete";
       ?>
      <style media="screen">
      @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');

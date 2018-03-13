@@ -1,11 +1,11 @@
 <?php
   include_once('menubar.php');
+  use Oop\Database;
+  use Oop\Account;
 
   if (isset($_SESSION['user'])){
     echo '<script type="text/javascript">window.location.href = "index.php";</script>';
   }
-
-
 
  ?>
  <!DOCTYPE html>
@@ -71,9 +71,21 @@
      </style>
    </head>
    <body>
+     <?php
+        if (isset($_POST['username']) && isset($_POST['type'])){
+          $database = new Database();
+          // if (is_null($database->checkUser($_POST['username']))){
+          if ($database->checkUser($_POST['username']) == 'false'){
+            echo '<script>alert("No username in system.");</script>';
+          } else {
+            echo '<script type="text/javascript">window.location.href = "phpSendMailGmail.php?username='.$_POST['username'].'&type='.$_POST['type'].'";</script>';
+          }
+        }
+
+      ?>
      <center>
 
-       <form method="get" action="phpSendMailGmail.php">
+       <form method="post" action="forgotPassword.php">
          <h1>Forgot Password</h1>
        <p>
 

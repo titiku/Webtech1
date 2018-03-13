@@ -6,28 +6,32 @@ if (isset($_SESSION['user'])){
   echo '<script type="text/javascript">window.location.href = "index.php";</script>';
 }
 $database=new Database();
-if(isset($_GET["username"]) && !isset($_POST["username"])){
+if(isset($_GET["judge"]) && !isset($_POST["username"])){
   $users=$database->loadAccounts();
   $same = 0;
-
+  $username = '';
   foreach ($users as $user) {
-    if ($user->getUsername() == $_GET["username"]){
+    if (password_verify($user->getUsername(),$_GET["judge"])){
+      $_GET['user'] = $user->getUsername();
       $same=1;
       break;
     }
   }
-
   if ($same == 0){
      echo '<script type="text/javascript">window.location.href = "index.php";</script>';
+  } else {
+
   }
 } else {
   if (isset($_POST["username"]) && isset($_POST["new_password"]) && isset($_POST["re-new_password"])){
+    if ($_POST['new_password'] == "" || $_POST['re-new_password'] == ""){
+      echo '<script type="text/javascript">window.location.href = "index.php";</script>';
+    }
     if ($_POST['new_password'] != $_POST['re-new_password']){
       echo '<script>alert("Your password is not same.");</script>';
-      // echo '<script type="text/javascript">window.location.href = "changePassword.php";</script>';
     } else {
       $passhash=password_hash($_POST['new_password'], PASSWORD_DEFAULT);
-      $database->changePassword($_POST['username'],$passhash);
+      $database->changePassword($_POST["username"],$passhash);
       echo '<script>alert("Change your password is success.");</script>';
       echo '<script type="text/javascript">window.location.href = "login.php";</script>';
     }
@@ -123,7 +127,7 @@ if(isset($_GET["username"]) && !isset($_POST["username"])){
 
        </div>
        <br>
-       <input type="text" hidden name="username" value="<?php if (isset($_GET['username'])){echo $_GET['username'];} ?>">
+       <input type="text" hidden name="username" value="<?php if (isset($_GET['user'])){echo $_GET['user'];} ?>">
          <input  style="" type="submit" class="btn btn-info" name="submit" value="Submit" id="but">
 
         </p>

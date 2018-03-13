@@ -7,8 +7,8 @@
     <title></title>
   </head>
   <body>
-    <h1>QRCode Checkin</h1>
-    <td><canvas  id="qrcanv<?= $_GET['id_at']?>"></canvas></td>
+    <h1>QRCode Google Form</h1>
+    <td><canvas  id="qrcanv<?= $_GET['id_ev']?>"></canvas></td>
   </body>
 </html>
 
@@ -759,7 +759,9 @@ function doqr(link) {
                 qrc.fillRect(px*(4+i),px*(4+j),px,px)
 }
 
-  setupqr(<?php echo '"qrcanv'.$_GET['id_at'].'"' ?>);
-  doqr(<?php echo '"http://localhost/project/manageevent/checkin.php?id_at='.$_GET['id_at'].'"' ?>);
+
+
+  setupqr(<?php echo '"qrcanv'.$_GET['id_ev'].'"' ?>);
+  doqr(<?php echo '"'.$_GET['url'].'"' ?>);
 
 </script>

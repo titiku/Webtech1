@@ -39,13 +39,10 @@ else{
   }
 
   $db=new Database();
-
   $userold=$db->loadAccount($id_ac);
-
 if ($userold->getEmail()==$email){
    $user = new Account($id_ac,$username,$password,$first_name,$last_name,$age,$gender,$email,$phone,$address,$id,$type,$image,$status);
 }else{
-    // echo "string";
     $user = new Account($id_ac,$username,$password,$first_name,$last_name,$age,$gender,$email,$phone,$address,$id,$type,$image,'n');
 }
    $db->updateAccounts($user);

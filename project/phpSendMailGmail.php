@@ -19,16 +19,21 @@
 	$mail->Password = "SuratGardens123456"; // GMAIL password
 	$mail->From = "SuratGardens@gmail.com"; // "name@yourdomain.com";
 	//$mail->AddReplyTo = "support@thaicreate.com"; // Reply
-	$mail->FromName = 'Hand Some Boy.'  ;// set from Name
-	$mail->Subject = "Hand Some Boy.";
+	$mail->FromName = 'Surat Event.'  ;// set from Name
+	$mail->Subject = "Surat Event.";
 	if (isset($_GET['username'])){
 		if ($_GET['type'] == "regis"){
 			$mail->Body = 'Your link : <a href="http://localhost/project/verifyUser.php?username='.$_GET['username'].'">http://localhost/project/verifyUser.php</a>';
 		} else if ($_GET['type'] == "forgotPassword") {
 			$database = new Database();
-		  $user = $database->loadProfile($_GET['username']);
+			$user = $database->loadProfile($_GET['username']);
+			$options = [
+    		'cost' => 8
+			];
+			$username_hash = password_hash($_GET['username'], PASSWORD_BCRYPT, $options);
+			echo $username_hash;
 			$_GET['email'] = $user->getEmail();
-			$mail->Body = 'Your link : <a href="http://localhost/project/newPassword.php?username='.$_GET['username'].'">http://localhost/project/newPassword.php</a>';
+			$mail->Body = 'Your link : <a href="http://localhost/project/newPassword.php?judge='.$username_hash.'">http://localhost/project/newPassword.php</a>';
 		}
 	} else if ($_GET['type'] == "acceptEvent"){
 		$mail->Body = 'You can join '.$_GET['name'].'.';
@@ -48,9 +53,9 @@
 	$mail->set('X-Priority', '1'); //Priority 1 = High, 3 = Normal, 5 = low
 
 	if($mail->Send()){
-		echo 'ส่งเรียบร้อย';
+		// echo 'ส่งเรียบร้อย';
 	} else {
-		echo 'ไม่';
+		// echo 'ไม่';
 	}
 	if (isset($_GET['id_ev'])){
 		echo '<script type="text/javascript">console.log("id_ev");</script>';

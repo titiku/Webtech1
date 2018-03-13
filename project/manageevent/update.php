@@ -80,7 +80,7 @@ else{
   $db=new Database();
   $event = new Event($id_ev,$id_ac,$name_event,$detail,$totalimg,$video2,$date,$time,$location,$map,$_POST['current'],$capacity,$free,$type,
 
-$_POST['precondition'],$_POST['create_time'],$_POST['status'],$_POST['google_form_url']);
+$_POST['precondition'],$_POST['create_time'],$_POST['status'],$_POST['google_form_url'],$_POST['payment']);
 
   $db->updateEvent($event);
   // echo "<br>";
