@@ -38,22 +38,17 @@ else{
     }
   }
 
-
-  // $connection = new PDO('mysql:host=localhost:3306;dbname=project;charset=utf8mb4','root','');
-  // $sql = "UPDATE accounts SET username='$username', password='$password',first_name='$first_name'
-  // ,last_name='$last_name' ,age='$age', gender='$gender',email='$email' ,phone='$phone'
-  // ,address='$address',id='$id' , type='$type',image='$image'
-  //
-  //  WHERE username='$idt'";
-  //
-  // $affectedRows = $connection->exec($sql);
-
   $db=new Database();
 
+  $userold=$db->loadAccount($id_ac);
 
+if ($userold->getEmail()==$email){
    $user = new Account($id_ac,$username,$password,$first_name,$last_name,$age,$gender,$email,$phone,$address,$id,$type,$image,$status);
+}else{
+    // echo "string";
+    $user = new Account($id_ac,$username,$password,$first_name,$last_name,$age,$gender,$email,$phone,$address,$id,$type,$image,'n');
+}
    $db->updateAccounts($user);
-
 
   echo "<script type='text/javascript'>window.location.href = \"http://localhost/project/manageuser\";</script>";
 }

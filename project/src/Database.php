@@ -98,17 +98,16 @@ class Database {
     if ($user2->getPassword()==$user->getPassword()){
       $sql = "UPDATE accounts SET  first_name='".$user->getFirst_name().
       "',last_name='".$user->getLast_name()."' ,age='".$user->getAge()."', gender='".$user->getGender()."',email='".$user->getEmail().
-      "' ,phone='".$user->getPhone()."',address='".$user->getAddress()."',id='".$user->getId()."' , type='".$user->getType()."',image='".$user->getImage().
+      "' ,phone='".$user->getPhone()."',address='".$user->getAddress()."',id='".$user->getId()."' , type='".$user->getType()."',image='".$user->getImage()."',status='".$user->getStatus().
       "' WHERE id_ac='".$user->getIdAcount()."'";
       $affectedRows = $connection->exec($sql);
 
 
     }else{
       $passhash=password_hash($user->getPassword(), PASSWORD_DEFAULT);
-
       $sql = "UPDATE accounts SET  password='".$passhash."',first_name='".$user->getFirst_name().
       "',last_name='".$user->getLast_name()."' ,age='".$user->getAge()."', gender='".$user->getGender()."',email='".$user->getEmail().
-      "' ,phone='".$user->getPhone()."',address='".$user->getAddress()."',id='".$user->getId()."' , type='".$user->getType()."',image='".$user->getImage().
+      "' ,phone='".$user->getPhone()."',address='".$user->getAddress()."',id='".$user->getId()."' , type='".$user->getType()."',image='".$user->getImage()."',status='".$user->getStatus().
       "' WHERE id_ac='".$user->getIdAcount()."'";
       $affectedRows = $connection->exec($sql);
     }
