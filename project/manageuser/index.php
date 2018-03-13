@@ -138,13 +138,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
      <thead>
   <tr>
-    <th>ac_id</th>
+
     <th>username</th>
-    <!-- <th>password</th> -->
     <th>firstname</th>
     <th>lastname</th>
-    <th >age</th>
-    <th >gender</th>
+
+
     <th>email</th>
     <th >phone</th>
     <th>address</th>
@@ -153,18 +152,18 @@ body {font-family: Arial, Helvetica, sans-serif;}
     <th >image</th>
     <th >status</th>
     <th>action</th>
+
   </tr>
 </thead>
 <tbody>
   <?php foreach($people as $person): ?>
     <tr>
-      <td><?= $person->id_ac; ?></td>
+
       <td><?= $person->username; ?></td>
-      <!-- <td><?= $person->password; ?></td> -->
+
       <td><?= $person->first_name; ?></td>
       <td><?= $person->last_name; ?></td>
-      <td><?= $person->age; ?></td>
-      <td><?= $person->gender; ?></td>
+
       <td><?= $person->email; ?></td>
       <td><?= $person->phone; ?></td>
       <td><?= $person->address; ?></td>
@@ -198,7 +197,22 @@ body {font-family: Arial, Helvetica, sans-serif;}
         <button class="btn btn-info" style="margin-bottom:20%;width:100%;" onclick="ball('<?= $person->username ?>','<?= $person->password ?>','<?= $person->first_name ?>
           ','<?= $person->last_name ?>','<?= $person->age ?>','<?= $person->gender ?>','<?= $person->email ?>','<?= $person->phone ?>
           ','<?= $person->address ?>','<?= $person->ID ?>','<?= $person->type ?>','<?= $person->image ?>','<?= $person->id_ac ?>','<?= $person->status ?>')">Edit</button>
-          <a style="margin-bottom:20%;width:100%;" onclick="return confirm('Are you sure you want to ban this entry?')" href="ban.php?id_ac=<?= $person->id_ac ?>" class='btn btn-danger'>Ban</a>
+          <?php
+                if ( $person->status=='b'){
+                    echo '<a style="margin-bottom:20%;width:100%;" onclick="'."return confirm('Are you sure you want to unban this comment?')".'" href="unban.php?id_ac='. $person->id_ac .'" class="btn btn-warning">Unban</a>';
+                }else{
+                    if ($_SESSION['user']->getIdAcount() !=$person->id_ac){
+
+                        echo '<a style="margin-bottom:20%;width:100%;" onclick="'."return confirm('Are you sure you want to ban this comment?')".'" href="ban.php?id_ac='. $person->id_ac .'" class="btn btn-danger">Ban</a>';
+                    }
+
+
+
+                }
+
+
+           ?>
+          <!-- <a style="margin-bottom:20%;width:100%;" onclick="return confirm('Are you sure you want to ban this entry?')" href="ban.php?id_ac=<?= $person->id_ac ?>" class='btn btn-danger'>Ban</a> -->
         <!-- <a hidden onclick="return confirm('Are you sure you want to delete this entry?')" href="delete.php?id_ac=<?= $person->id_ac ?>" class='btn btn-danger'>Delete</a> -->
 
       </td>
@@ -233,12 +247,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
         <input id='usernameNew' readonly type="text" name="usernameNew" value="" placeholder="Enter your username" required value="" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
         </div>
 
-        <div class="input-group input-group-sm mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-sm">password </span>
-          </div>
-        <input readonly onclick="myFunction()" id='passwordNew' type="text" name="passwordNew" value="" placeholder="Enter password" required value="" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-        </div>
+
+
+            <span hidden class="input-group-text" id="inputGroup-sizing-sm">password </span>
+        <input hidden readonly onclick="myFunction()" id='passwordNew' type="text" name="passwordNew" value="" placeholder="Enter password" required value="" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+
 
         <div class="input-group input-group-sm mb-3">
           <div class="input-group-prepend">

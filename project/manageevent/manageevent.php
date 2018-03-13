@@ -7,7 +7,7 @@
   use Oop\Database;
 
   $db=new Database();
-
+  $count=0;
 
   if (isset($_SESSION['user'])){
     if ($_SESSION['user']->getType()=='attendant'){
@@ -179,7 +179,9 @@ function checkOrganizer($list){
 
 
         function fetch_data($list){
+            $c=0;
              foreach ($list as &$event) {
+               $c=$c+1;
                  $db=new Database();
                $a=$db->loadAccount($event->get_id_ac());
                $date=date_create($event->get_date());
@@ -202,24 +204,9 @@ function checkOrganizer($list){
                  }
 
 
-                 // $output .= '<tr>
-                 //               <td>'.$event->get_id_ev().'</td>
-                 //               <td>'.$event->get_name_event().'</td>
-                 //               <td>'.$event->get_id_ac().'</td>
-                 //               <td>'.$a->getUsername().'</td>
-                 //               <td>'.$event->get_current_capacity().'</td>
-                 //               <td>'.$event->get_capacity().'</td>
-                 //               <td>'.$event->get_free().'</td>
-                 //               <td>'.$event->get_type().'</td>
-                 //               <td>'.$event->get_location().'</td>
-                 //               <td>'.$event->get_time().'</td>
-                 //               <td>'.$day.'</td>
-                 //               <td>'.$event->get_date().'</td>
-                 //             </tr>
-                 //                      ';
 
               $output .= '<tr>
-                            <td>'.$event->get_id_ev().'</td>
+                            <td>'.$c.'</td>
                             <td>'.$event->get_name_event().'</td>
                             <td>'.$a->getUsername().'</td>
                             <td>'.$event->get_type().'</td>
@@ -258,8 +245,8 @@ function checkOrganizer($list){
                    <tr>
 
 
-                        <th>id_ev</th>
-                        <th>name_event</th>
+                        <th>No.</th>
+                        <th>name event</th>
 
                           <th>username</th>
 
@@ -659,37 +646,36 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
      <thead>
   <tr>
-    <th>id_ev</th>
-    <th>name_event</th>
-    <th>id_ac</th>
-      <th>username</th>
+    <th style="word-wrap: break-word;">No.</th>
+    <th style="word-wrap: break-word;">name event</th>
+      <th style="word-wrap: break-word;">username</th>
 
 
-      <th >current</th>
-    <th >capacity</th>
-    <th >price</th>
-    <th>type</th>
-        <th>address</th>
-      <th>time</th>
-    <th>day</th>
-    <th>month</th>
-      <th>date</th>
-
-    <th>action</th>
+      <th style="word-wrap: break-word;">current capacity</th>
+    <th style="word-wrap: break-word;">capacity</th>
+    <th style="word-wrap: break-word;">price</th>
+    <th style="word-wrap: break-word;">type</th>
+        <th style="word-wrap: break-word;">address</th>
+      <th style="word-wrap: break-word;">time</th>
+    <th style="word-wrap: break-word;">day</th>
+    <th style="word-wrap: break-word;">month</th>
+      <th style="word-wrap: break-word;">date</th>
+    <th style="word-wrap: break-word;">action</th>
 
 
   </tr>
 </thead>
 <tbody>
-  <?php foreach($people as $person): ?>
 
+  <?php foreach($people as $person): ?>
+    <?php $count=$count+1; ?>
 
 
 
     <tr>
-      <td><?= $person->get_id_ev(); ?></td>
+      <td><?= $count ?></td>
       <td><?= $person->get_name_event(); ?></td>
-      <td><?= $person->get_id_ac(); ?></td>
+
 
       <?php
 
@@ -738,29 +724,29 @@ body {font-family: Arial, Helvetica, sans-serif;}
           $month=date_format($date,"n");
 
         if ($month==1) {
-            $month='January('.$month.') ';
+            $month='January';
         }elseif ($month==2) {
-              $month='February('.$month.') ';
+              $month='February';
         }elseif ($month==3) {
-              $month='March('.$month.') ';
+              $month='March';
         }elseif ($month==4) {
-              $month='April('.$month.') ';
+              $month='April';
         }elseif ($month==5) {
-              $month='May('.$month.') ';
+              $month='May';
         }elseif ($month==6) {
-              $month='June('.$month.') ';
+              $month='June';
         }elseif ($month==7) {
-            $month='July('.$month.') ';
+            $month='July';
         }elseif ($month==8) {
-            $month='August('.$month.') ';
+            $month='August';
         }elseif ($month==9) {
-            $month='September('.$month.') ';
+            $month='September';
         }elseif ($month==10) {
-            $month='October('.$month.') ';
+            $month='October';
         }elseif ($month==11) {
-            $month='November('.$month.') ';
+            $month='November';
         }elseif ($month==12) {
-            $month='December('.$month.') ';
+            $month='December';
         }
 
       ?>
@@ -995,7 +981,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-sm" style="color:343A40 ; margin-top:10px ; font-size:18px ;background-color: #00cc99;">Capacity</span>
           </div>
-          <input id='capacity' required value="" onkeypress="return event.keyCode != 13;" type="number"  name="capacity"  min="1" size="40px" style="margin-top:10px ; "  class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" >
+          <input id='capacity'readonly required value="" onkeypress="return event.keyCode != 13;" type="number"  name="capacity"  min="1" size="40px" style="margin-top:10px ; "  class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" >
           </div>
 
           <br>

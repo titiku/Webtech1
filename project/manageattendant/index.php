@@ -34,31 +34,29 @@ $list = $database->loadAttendantIDAC($_SESSION['user']->getIdAcount());
              <thead>
           <tr>
 
-            <th>id_at</th>
-
-            <th>id_ev</th>
-            <th>name_event</th>
-            <th>num</th>
-             <th>image1</th>
-             <th >image2</th>
+            <th>No.</th>
+            <th>name event</th>
+            <th>number of ticket</th>
+             <th>image</th>
+             <th >image</th>
                <th >status</th>
              <th >action</th>
           </tr>
         </thead>
         <tbody>
+          <?php
+              $count=0;
+           ?>
           <?php foreach($list as $person): ?>
-
+              <?php $count=$count+1; ?>
             <tr>
 
-              <td><?= $person->get_id_at(); ?></td>
-
-              <td><?= $person->get_id_ev(); ?></td>
 
               <?php
 
                 $a=$db->loadEvent($person->get_id_ev());
                 ?>
-
+                <td><?= $count ?></td>
               <td><?= $a->get_name_event() ?></td>
                 <td><?= $person->get_num() ?></td>
               <?php $pic=$person->get_image1();

@@ -472,7 +472,7 @@ html, body {
 
 
     <div class="input-group-prepend">
-      <span class="input-group-text" id="inputGroup-sizing-sm" style="color:343A40 ; margin-top:10px ; font-size:18px ;background-color: #00cc99;border-radius: 20px;">Price(bath)</span>
+      <span class="input-group-text" id="inputGroup-sizing-sm" style="color:343A40 ; margin-top:10px ; font-size:18px ;background-color: #00cc99;border-radius: 20px;">Price(baht)</span>
     </div>
     <input  required value="" onkeypress="return event.keyCode != 13;" type="number"  name="free"  min="0" size="40px" style="margin-top:10px ;border-radius: 20px; "  class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" >
     </div>
@@ -555,7 +555,7 @@ html, body {
                   echo '<input  type="submit" class="btn btn-secondary" name="submit" value="submit" style="margin-left:75%" >';
               }else{
                     echo '<input  onclick="myFunction()" type="button" class="btn btn-secondary" name="submit" value="submit" style="margin-left:75%" >';
-            
+
               }
            ?>
 

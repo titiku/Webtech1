@@ -414,8 +414,16 @@ img {
          <div class="progress-bar bg-blue progress-bar-striped progress-bar-animated " style="width:<?php echo strval(($event->get_current_capacity()/$event->get_capacity())*100); ?>%" ><span style="color:black;"><?php echo strval($event->get_current_capacity())."/".strval($event->get_capacity()); ?></span></div>
        </div><br><br>
 
+       <?php
 
-        <h1>precondition: <?= $event->get_precondition()?> </h1>
+            if(trim($event->get_precondition()," ")==''){
+              echo "  <h1>Precondition: ---- </h1>";
+            }else{
+              echo "  <h1>Precondition:".  $event->get_precondition() ."</h1>";
+            }
+
+        ?>
+        <!-- <h1>precondition: <?= $event->get_precondition()?> </h1> -->
        <h1>Price: <?= $event->get_free()?> Baht</h1>
        <?php
        if (isset($_SESSION['user'])){
