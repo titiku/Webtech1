@@ -5,7 +5,7 @@
 <title></title>
 </head>
 <body>
-<h1>Project Webtext(The Event)</h1>
+<h1>Project Webtech(The Event)</h1>
 <p>By Surat Event</p>
 ====================================================
 <h3>โครงสร้าง Directory ของ Project</h3>
@@ -14,7 +14,7 @@
 --------------------------------------------------
 <h1>ขั้นตอนการติดตั้ง</h1>
 <p>1. Download file จาก github แล้วทำการแตกไฟล์และนำไปวางไว้ที่ :C-->xampp-->htdocs โดยให้แยกไฟล์ออกมาเป็น Folder ชื่อ project </p>
-<p>2. นำ File ที่อยู่ใน Folder project-->projcet.sql เพื่อ ้สร้าง Database ที่ชื่อ project แล้วเลือก Collation เป็น UTF-8-heneral-ci</p>
+<p>2. นำ File ที่อยู่ใน Folder project-->projcet.sql เพื่อ ้สร้าง Database ที่ชื่อ project แล้วเลือก Collation เป็น UTF-8-general-ci</p>
 <p>3.หลังจากนั้นให้กด import file project.sql มาลงใน Surat Garden ใน localhost/phpMyadmin</p>
 
 <h1>ขั้นตอนการ database configuration</h1>
@@ -71,7 +71,7 @@
 ิ<br>
 <h3>ไฟล์ที่รองรับการอัพ</h3>
 <p>video ที่รองรับ mp4,ogg </p>
-<p>image ที่รองรับ mpg,png</p>
+<p>image ที่รองรับ jpg,png</p>
 --------------------------------------------------
 <p>manageattendant ตัวจัดการผู้เข้าร่วม</p>
 <p>manageevent ตัวจัดการ events</p>
