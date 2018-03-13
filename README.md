@@ -71,7 +71,7 @@
 ิ<br>
 <h3>ไฟล์ที่รองรับการอัพ</h3>
 <p>video ที่รองรับ mp4,ogg </p>
-<p>image ที่รองรับ mpg,png</p>
+<p>image ที่รองรับ jpg,png</p>
 --------------------------------------------------
 <p>manageattendant ตัวจัดการผู้เข้าร่วม</p>
 <p>manageevent ตัวจัดการ events</p>
