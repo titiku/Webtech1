@@ -5,7 +5,7 @@
 <title></title>
 </head>
 <body>
-<h1>Project Webtext(The Event)</h1>
+<h1>Project Webtech(The Event)</h1>
 <p>By Surat Event</p>
 ====================================================
 <h3>โครงสร้าง Directory ของ Project</h3>
